@@ -1,5 +1,5 @@
 
- from os import dup2
+from os import dup2
 from pty import spawn
 from time import sleep
 from random import randint
